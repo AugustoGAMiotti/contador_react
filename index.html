@@ -14,16 +14,24 @@
 <body>
     <div id="root"></div>
     <script type="text/babel">
-        function Contador({titulo}){
+        function Contador({titulo, contador, clicou}){
             return(
-                <button>{titulo}</button>
+                <button onClick={clicou}>
+                    {titulo} : {contador}
+                </button>
             );
         }
         function MyApp() {
+            const [contador, setContador] = React.useState(0)
+            
+            function clicou(){
+                setContador(contador + 1)
+            }
+
             return (
                 <>
-                    <Contador titulo='1'></Contador>
-                    <Contador titulo='2'></Contador>
+                    <Contador titulo='1' contador={contador} clicou={clicou}></Contador>
+                    <Contador titulo='2' contador={contador} clicou={clicou}></Contador>
                 </>
             );
         }
